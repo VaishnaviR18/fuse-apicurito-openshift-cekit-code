@@ -1,0 +1,12 @@
+name: go-bindata
+version: 1.0
+description: "Module used to install go-bindata"
+
+artifacts:
+- name: "vendor.tar.gz"
+  sha512: "019c6bc09829981ae48329ed51e381b776f7db2435eff2dc4c8f3695e7cd8505d3fd6e0d2d530f8114fc0c028c019991f5467eb4d0e56b4b5adbe1510b225a99"
+  url: 
+  dest: "/opt/app-root/src/apicurito-$APICURITO_TAG/ui/cmd"
+
+execute:
+- script: install.sh

@@ -1,0 +1,12 @@
+name: apicurito
+version: 1.0
+description: "Module used to install fuse-apicurito"
+
+artifacts:
+- name: "apicurito-$APICURITO_TAG.tar.gz"
+  sha512: 
+  url: 
+  dest: "/"
+
+execute:
+- script: install.sh

@@ -1,0 +1,12 @@
+name: apicurito-ui
+version: 1.0
+description: "Module used to install fuse-apicurito-ui"
+
+artifacts:
+- name: "apicurito-ui-$APICURITO_VERSION-dist.tar.gz"
+  sha512: "5aac79f25fe57c42ddb5218b61f9babfbe46ab75a79ab605435e5279db4f07fc4beec6f56ac11a5264f3d291afe3f16d080b34bebea82a6bf4a0e4fd8b7d7eca"
+  url: "http://indy.psi.redhat.com/api/content/maven/group/redhat-builds//io/apicurio/apicurito-ui/$APICURITO_VERSION/apicurito-ui-$APICURITO_VERSION-dist.tar.gz"
+  dest: "/opt/app-root/src/apicurito-$APICURITO_TAG/ui/cmd/"
+
+execute:
+- script: install.sh

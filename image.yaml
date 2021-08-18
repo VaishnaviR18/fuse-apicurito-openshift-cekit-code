@@ -1,0 +1,55 @@
+schema_version: 1
+
+from: "registry.redhat.io/rhel8/go-toolset"
+name: "builder"
+
+envs:
+- name: APICURITO_VERSION
+  value: 1.2.2.fuse-790012-redhat-00001
+- name: APICURITO_TAG
+  value: apicurito-1.2.2.fuse-790012
+
+modules:
+  repositories:
+    - name: modules
+      path: modules
+  install:
+    - name: apicurito
+    - name: vendor
+    - name: go-bindata
+    - name: apicurito-ui
+
+#final image
+
+name: "fuse7/fuse-apicurito-rhel8"
+description: "Design beautiful, functional APIs with zero coding, using a visual designer for OpenAPI documents."
+version: "1.9"
+from: "registry.redhat.io/ubi8/ubi-minimal"
+
+labels:
+- name: "com.redhat.component"
+  value: "fuse-apicurito-openshift-rhel-8-container"
+- name: "maintainer"
+  value: "Apicurito Authors <apicurio@lists.jboss.org>"   
+- name: "io.k8s.description"
+  value: "Design beautiful, functional APIs with zero coding, using a visual designer for OpenAPI documents."
+- name: "io.k8s.display-name"
+  value: "Red Hat Fuse - Apicurito"
+- name: "io.openshift.tags"
+  value: "fuse,apicurito"
+  
+ports:
+    - value: 8080
+      expose: true     
+
+run:
+  user: 998
+
+artifacts:
+    - image: builder
+      path: /opt/app-root/src/apicurito-ui
+      dest: /apicurito-ui
+
+    - image: builder
+      path: /opt/app-root/src/licenses/*
+      dest: /root/licenses/fuse-apicurito-openshift-container/
